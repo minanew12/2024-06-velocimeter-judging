@@ -13,11 +13,6 @@ Aymen0909, GalloDaSballo, KupiaSec, McToady, Nyx, bin2chen, cawfree, cryptic, cu
 `GaugeV4.depositWithLock`  has a check to prevent someone else from re-locking a user position
 
 https://github.com/sherlock-audit/2024-06-velocimeter/blob/63818925987a5115a80eff4bd12578146a844cfd/v4-contracts/contracts/GaugeV4.sol#L443-L445
-
-```solidity
-    function depositWithLock(address account, uint256 amount, uint256 _lockDuration) external lock {
-        require(msg.sender == account || isOToken[msg.sender],"Not allowed to deposit with lock"); 
-        _deposit(account, amount, 0);
 ```
 
 This check can be sidestepped by exercising a position on behalf of a victim via the `OptionTokenV4`
